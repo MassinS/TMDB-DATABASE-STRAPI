@@ -1,0 +1,29 @@
+{
+  "kind": "collectionType",
+  "collectionName": "genre_tv_shows",
+  "info": {
+    "singularName": "genre-tv-show",
+    "pluralName": "genre-tv-shows",
+    "displayName": "genre-TvShow"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "id_genre": {
+      "type": "biginteger",
+      "unique": true,
+      "required": true
+    },
+    "nom_genre": {
+      "type": "string",
+      "required": true
+    },
+    "genre_ids": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::tv-show.tv-show",
+      "inversedBy": "genre_tv_shows"
+    }
+  }
+}

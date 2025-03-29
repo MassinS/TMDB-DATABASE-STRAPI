@@ -369,91 +369,31 @@ export interface AdminUser extends Struct.CollectionTypeSchema {
   };
 }
 
-export interface ApiAboutAbout extends Struct.SingleTypeSchema {
-  collectionName: 'abouts';
+export interface ApiCommentaireCommentaire extends Struct.CollectionTypeSchema {
+  collectionName: 'commentaires';
   info: {
-    description: 'Write about yourself and the content you create';
-    displayName: 'About';
-    pluralName: 'abouts';
-    singularName: 'about';
+    displayName: 'commentaire';
+    pluralName: 'commentaires';
+    singularName: 'commentaire';
   };
   options: {
-    draftAndPublish: false;
+    draftAndPublish: true;
   };
   attributes: {
-    blocks: Schema.Attribute.DynamicZone<
-      ['shared.media', 'shared.quote', 'shared.rich-text', 'shared.slider']
-    >;
+    commentaire: Schema.Attribute.Text & Schema.Attribute.Required;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
-    locale: Schema.Attribute.String & Schema.Attribute.Private;
-    localizations: Schema.Attribute.Relation<'oneToMany', 'api::about.about'> &
-      Schema.Attribute.Private;
-    publishedAt: Schema.Attribute.DateTime;
-    title: Schema.Attribute.String;
-    updatedAt: Schema.Attribute.DateTime;
-    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
-      Schema.Attribute.Private;
-  };
-}
-
-export interface ApiAuthorAuthor extends Struct.CollectionTypeSchema {
-  collectionName: 'authors';
-  info: {
-    description: 'Create authors for your content';
-    displayName: 'Author';
-    pluralName: 'authors';
-    singularName: 'author';
-  };
-  options: {
-    draftAndPublish: false;
-  };
-  attributes: {
-    avatar: Schema.Attribute.Media<'images' | 'files' | 'videos'>;
-    createdAt: Schema.Attribute.DateTime;
-    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
-      Schema.Attribute.Private;
-    email: Schema.Attribute.String;
+    id_media_type: Schema.Attribute.BigInteger & Schema.Attribute.Required;
+    id_user: Schema.Attribute.BigInteger & Schema.Attribute.Required;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<
       'oneToMany',
-      'api::author.author'
+      'api::commentaire.commentaire'
     > &
       Schema.Attribute.Private;
-    name: Schema.Attribute.String;
+    media_type: Schema.Attribute.String & Schema.Attribute.Required;
     publishedAt: Schema.Attribute.DateTime;
-    updatedAt: Schema.Attribute.DateTime;
-    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
-      Schema.Attribute.Private;
-  };
-}
-
-export interface ApiCategoryCategory extends Struct.CollectionTypeSchema {
-  collectionName: 'categories';
-  info: {
-    description: 'Organize your content into categories';
-    displayName: 'Category';
-    pluralName: 'categories';
-    singularName: 'category';
-  };
-  options: {
-    draftAndPublish: false;
-  };
-  attributes: {
-    createdAt: Schema.Attribute.DateTime;
-    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
-      Schema.Attribute.Private;
-    description: Schema.Attribute.Text;
-    locale: Schema.Attribute.String & Schema.Attribute.Private;
-    localizations: Schema.Attribute.Relation<
-      'oneToMany',
-      'api::category.category'
-    > &
-      Schema.Attribute.Private;
-    name: Schema.Attribute.String;
-    publishedAt: Schema.Attribute.DateTime;
-    slug: Schema.Attribute.UID;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -463,6 +403,7 @@ export interface ApiCategoryCategory extends Struct.CollectionTypeSchema {
 export interface ApiFilmFilm extends Struct.CollectionTypeSchema {
   collectionName: 'films';
   info: {
+    description: '';
     displayName: 'film';
     pluralName: 'films';
     singularName: 'film';
@@ -471,13 +412,59 @@ export interface ApiFilmFilm extends Struct.CollectionTypeSchema {
     draftAndPublish: true;
   };
   attributes: {
+    adult: Schema.Attribute.Boolean & Schema.Attribute.Required;
+    Backdrop_path: Schema.Attribute.String & Schema.Attribute.Required;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
+    id_film: Schema.Attribute.BigInteger &
+      Schema.Attribute.Required &
+      Schema.Attribute.Unique;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<'oneToMany', 'api::film.film'> &
       Schema.Attribute.Private;
-    name: Schema.Attribute.String;
+    original_language: Schema.Attribute.String & Schema.Attribute.Required;
+    original_title: Schema.Attribute.String & Schema.Attribute.Required;
+    overview: Schema.Attribute.Text & Schema.Attribute.Required;
+    popularity_tmdb: Schema.Attribute.Decimal & Schema.Attribute.Required;
+    popularity_website: Schema.Attribute.Decimal;
+    poster_path: Schema.Attribute.String & Schema.Attribute.Required;
+    publishedAt: Schema.Attribute.DateTime;
+    release_date: Schema.Attribute.Date & Schema.Attribute.Required;
+    title: Schema.Attribute.String & Schema.Attribute.Required;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    Video: Schema.Attribute.Boolean & Schema.Attribute.Required;
+    vote_average_tmdb: Schema.Attribute.Decimal & Schema.Attribute.Required;
+    vote_average_website: Schema.Attribute.Decimal;
+    vote_count_tmdb: Schema.Attribute.Integer & Schema.Attribute.Required;
+    vote_count_website: Schema.Attribute.Integer;
+  };
+}
+
+export interface ApiGenreFilmGenreFilm extends Struct.CollectionTypeSchema {
+  collectionName: 'genre_films';
+  info: {
+    displayName: 'genre-Film';
+    pluralName: 'genre-films';
+    singularName: 'genre-film';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    id_genre: Schema.Attribute.BigInteger & Schema.Attribute.Required;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::genre-film.genre-film'
+    > &
+      Schema.Attribute.Private;
+    nom_genre: Schema.Attribute.String & Schema.Attribute.Required;
     publishedAt: Schema.Attribute.DateTime;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
@@ -485,35 +472,111 @@ export interface ApiFilmFilm extends Struct.CollectionTypeSchema {
   };
 }
 
-export interface ApiGlobalGlobal extends Struct.SingleTypeSchema {
-  collectionName: 'globals';
+export interface ApiGenreTvShowGenreTvShow extends Struct.CollectionTypeSchema {
+  collectionName: 'genre_tv_shows';
   info: {
-    description: 'Define global settings';
-    displayName: 'Global';
-    pluralName: 'globals';
-    singularName: 'global';
+    displayName: 'genre-TvShow';
+    pluralName: 'genre-tv-shows';
+    singularName: 'genre-tv-show';
   };
   options: {
-    draftAndPublish: false;
+    draftAndPublish: true;
   };
   attributes: {
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
-    defaultSeo: Schema.Attribute.Component<'shared.seo', false>;
-    favicon: Schema.Attribute.Media<'images' | 'files' | 'videos'>;
+    genre_ids: Schema.Attribute.Relation<'manyToOne', 'api::tv-show.tv-show'>;
+    id_genre: Schema.Attribute.BigInteger &
+      Schema.Attribute.Required &
+      Schema.Attribute.Unique;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<
       'oneToMany',
-      'api::global.global'
+      'api::genre-tv-show.genre-tv-show'
     > &
       Schema.Attribute.Private;
+    nom_genre: Schema.Attribute.String & Schema.Attribute.Required;
     publishedAt: Schema.Attribute.DateTime;
-    siteDescription: Schema.Attribute.Text & Schema.Attribute.Required;
-    siteName: Schema.Attribute.String & Schema.Attribute.Required;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
+  };
+}
+
+export interface ApiTvShowTvShow extends Struct.CollectionTypeSchema {
+  collectionName: 'tv_shows';
+  info: {
+    description: '';
+    displayName: 'Tv-show';
+    pluralName: 'tv-shows';
+    singularName: 'tv-show';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    adult: Schema.Attribute.Boolean & Schema.Attribute.Required;
+    backdrop_path: Schema.Attribute.String & Schema.Attribute.Required;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    first_air_date: Schema.Attribute.Date & Schema.Attribute.Required;
+    genre_tv_shows: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::genre-tv-show.genre-tv-show'
+    >;
+    id_TvShow: Schema.Attribute.BigInteger & Schema.Attribute.Required;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::tv-show.tv-show'
+    > &
+      Schema.Attribute.Private;
+    Name: Schema.Attribute.String & Schema.Attribute.Required;
+    Origin_country: Schema.Attribute.JSON & Schema.Attribute.Required;
+    original_language: Schema.Attribute.String & Schema.Attribute.Required;
+    original_Name: Schema.Attribute.String & Schema.Attribute.Required;
+    overview: Schema.Attribute.Text & Schema.Attribute.Required;
+    popularity_tmdb: Schema.Attribute.Decimal & Schema.Attribute.Required;
+    popularity_website: Schema.Attribute.Decimal;
+    poster_path: Schema.Attribute.String & Schema.Attribute.Required;
+    publishedAt: Schema.Attribute.DateTime;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    vote_average_tmdb: Schema.Attribute.Decimal & Schema.Attribute.Required;
+    vote_average_website: Schema.Attribute.Decimal;
+    vote_count_tmdb: Schema.Attribute.BigInteger & Schema.Attribute.Required;
+    vote_count_website: Schema.Attribute.BigInteger;
+  };
+}
+
+export interface ApiVoteVote extends Struct.CollectionTypeSchema {
+  collectionName: 'votes';
+  info: {
+    displayName: 'vote';
+    pluralName: 'votes';
+    singularName: 'vote';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    id_media_type: Schema.Attribute.BigInteger;
+    id_user: Schema.Attribute.BigInteger;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<'oneToMany', 'api::vote.vote'> &
+      Schema.Attribute.Private;
+    media_type: Schema.Attribute.String & Schema.Attribute.Required;
+    publishedAt: Schema.Attribute.DateTime;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    vote: Schema.Attribute.BigInteger & Schema.Attribute.Required;
   };
 }
 
@@ -1026,11 +1089,12 @@ declare module '@strapi/strapi' {
       'admin::transfer-token': AdminTransferToken;
       'admin::transfer-token-permission': AdminTransferTokenPermission;
       'admin::user': AdminUser;
-      'api::about.about': ApiAboutAbout;
-      'api::author.author': ApiAuthorAuthor;
-      'api::category.category': ApiCategoryCategory;
+      'api::commentaire.commentaire': ApiCommentaireCommentaire;
       'api::film.film': ApiFilmFilm;
-      'api::global.global': ApiGlobalGlobal;
+      'api::genre-film.genre-film': ApiGenreFilmGenreFilm;
+      'api::genre-tv-show.genre-tv-show': ApiGenreTvShowGenreTvShow;
+      'api::tv-show.tv-show': ApiTvShowTvShow;
+      'api::vote.vote': ApiVoteVote;
       'plugin::content-releases.release': PluginContentReleasesRelease;
       'plugin::content-releases.release-action': PluginContentReleasesReleaseAction;
       'plugin::i18n.locale': PluginI18NLocale;

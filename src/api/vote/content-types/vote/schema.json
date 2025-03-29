@@ -1,0 +1,28 @@
+{
+  "kind": "collectionType",
+  "collectionName": "votes",
+  "info": {
+    "singularName": "vote",
+    "pluralName": "votes",
+    "displayName": "vote"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "id_user": {
+      "type": "biginteger"
+    },
+    "id_media_type": {
+      "type": "biginteger"
+    },
+    "media_type": {
+      "type": "string",
+      "required": true
+    },
+    "vote": {
+      "type": "biginteger",
+      "required": true
+    }
+  }
+}

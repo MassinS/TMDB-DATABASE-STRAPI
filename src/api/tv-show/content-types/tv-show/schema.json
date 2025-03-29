@@ -1,34 +1,29 @@
 {
   "kind": "collectionType",
-  "collectionName": "films",
+  "collectionName": "tv_shows",
   "info": {
-    "singularName": "film",
-    "pluralName": "films",
-    "displayName": "film",
+    "singularName": "tv-show",
+    "pluralName": "tv-shows",
+    "displayName": "Tv-show",
     "description": ""
   },
   "options": {
     "draftAndPublish": true
   },
   "attributes": {
-    "id_film": {
+    "id_TvShow": {
       "type": "biginteger",
-      "required": true,
-      "unique": true
+      "required": true
     },
-    "title": {
+    "Name": {
       "type": "string",
       "required": true
     },
-    "overview": {
-      "type": "text",
+    "original_Name": {
+      "type": "string",
       "required": true
     },
     "original_language": {
-      "type": "string",
-      "required": true
-    },
-    "original_title": {
       "type": "string",
       "required": true
     },
@@ -36,19 +31,23 @@
       "type": "boolean",
       "required": true
     },
-    "release_date": {
+    "overview": {
+      "type": "text",
+      "required": true
+    },
+    "Origin_country": {
+      "type": "json",
+      "required": true
+    },
+    "first_air_date": {
       "type": "date",
       "required": true
     },
-    "Video": {
-      "type": "boolean",
-      "required": true
-    },
-    "Backdrop_path": {
+    "poster_path": {
       "type": "string",
       "required": true
     },
-    "poster_path": {
+    "backdrop_path": {
       "type": "string",
       "required": true
     },
@@ -57,23 +56,27 @@
       "required": true
     },
     "popularity_website": {
-      "type": "decimal",
-      "required": false
+      "type": "decimal"
     },
     "vote_average_tmdb": {
       "type": "decimal",
       "required": true
     },
     "vote_average_website": {
-      "type": "decimal",
-      "required": false
+      "type": "decimal"
     },
     "vote_count_tmdb": {
-      "type": "integer",
+      "type": "biginteger",
       "required": true
     },
     "vote_count_website": {
-      "type": "integer"
+      "type": "biginteger"
+    },
+    "genre_tv_shows": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::genre-tv-show.genre-tv-show",
+      "mappedBy": "genre_ids"
     }
   }
 }

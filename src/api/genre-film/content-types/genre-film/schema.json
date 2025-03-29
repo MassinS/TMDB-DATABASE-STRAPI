@@ -1,0 +1,22 @@
+{
+  "kind": "collectionType",
+  "collectionName": "genre_films",
+  "info": {
+    "singularName": "genre-film",
+    "pluralName": "genre-films",
+    "displayName": "genre-Film"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "id_genre": {
+      "type": "biginteger",
+      "required": true
+    },
+    "nom_genre": {
+      "type": "string",
+      "required": true
+    }
+  }
+}
