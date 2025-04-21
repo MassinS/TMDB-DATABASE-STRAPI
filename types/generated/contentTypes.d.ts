@@ -430,6 +430,7 @@ export interface ApiFilmFilm extends Struct.CollectionTypeSchema {
     original_language: Schema.Attribute.String & Schema.Attribute.Required;
     original_title: Schema.Attribute.String & Schema.Attribute.Required;
     overview: Schema.Attribute.Text & Schema.Attribute.Required;
+    page_fetched_from: Schema.Attribute.BigInteger;
     popularity_tmdb: Schema.Attribute.Decimal & Schema.Attribute.Required;
     popularity_website: Schema.Attribute.Decimal;
     poster_path: Schema.Attribute.String & Schema.Attribute.Required;

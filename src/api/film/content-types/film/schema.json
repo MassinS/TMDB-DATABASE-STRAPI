@@ -80,6 +80,9 @@
       "relation": "oneToMany",
       "target": "api::genre-tv-show.genre-tv-show",
       "mappedBy": "film"
+    },
+    "page_fetched_from": {
+      "type": "biginteger"
     }
   }
 }
