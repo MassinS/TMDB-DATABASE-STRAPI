@@ -74,6 +74,12 @@
     },
     "vote_count_website": {
       "type": "integer"
+    },
+    "genre_tv_films": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::genre-tv-show.genre-tv-show",
+      "mappedBy": "film"
     }
   }
 }

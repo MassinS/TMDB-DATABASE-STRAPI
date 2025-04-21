@@ -4,7 +4,8 @@
   "info": {
     "singularName": "genre-tv-show",
     "pluralName": "genre-tv-shows",
-    "displayName": "genre-TvShow"
+    "displayName": "genre-TvFilm",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true
@@ -19,11 +20,17 @@
       "type": "string",
       "required": true
     },
-    "genre_ids": {
+    "tv_show": {
       "type": "relation",
       "relation": "manyToOne",
       "target": "api::tv-show.tv-show",
-      "inversedBy": "genre_tv_shows"
+      "inversedBy": "genre_tv_films"
+    },
+    "film": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::film.film",
+      "inversedBy": "genre_tv_films"
     }
   }
 }
