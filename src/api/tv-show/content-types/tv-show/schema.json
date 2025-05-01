@@ -77,6 +77,9 @@
       "relation": "oneToMany",
       "target": "api::genre-tv-show.genre-tv-show",
       "mappedBy": "tv_show"
+    },
+    "page_fetched_from": {
+      "type": "biginteger"
     }
   }
 }
