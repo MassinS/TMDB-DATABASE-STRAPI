@@ -482,6 +482,43 @@ export interface ApiGenreTvShowGenreTvShow extends Struct.CollectionTypeSchema {
   };
 }
 
+export interface ApiRecommendationFilmRecommendationFilm
+  extends Struct.CollectionTypeSchema {
+  collectionName: 'recommendation_films';
+  info: {
+    displayName: 'recommendation_film';
+    pluralName: 'recommendation-films';
+    singularName: 'recommendation-film';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    id_film: Schema.Attribute.BigInteger & Schema.Attribute.Required;
+    id_films_recommendations: Schema.Attribute.JSON & Schema.Attribute.Required;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::recommendation-film.recommendation-film'
+    > &
+      Schema.Attribute.Private;
+    page_fetched_from_strapi_film: Schema.Attribute.BigInteger &
+      Schema.Attribute.Required;
+    page_fetched_from_strapi_recommendation: Schema.Attribute.BigInteger &
+      Schema.Attribute.Required;
+    page_fetched_from_tmdb_recommendation: Schema.Attribute.BigInteger &
+      Schema.Attribute.Required;
+    page_recommendation_maximum: Schema.Attribute.BigInteger;
+    publishedAt: Schema.Attribute.DateTime;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
 export interface ApiTvShowTvShow extends Struct.CollectionTypeSchema {
   collectionName: 'tv_shows';
   info: {
@@ -1071,6 +1108,7 @@ declare module '@strapi/strapi' {
       'api::commentaire.commentaire': ApiCommentaireCommentaire;
       'api::film.film': ApiFilmFilm;
       'api::genre-tv-show.genre-tv-show': ApiGenreTvShowGenreTvShow;
+      'api::recommendation-film.recommendation-film': ApiRecommendationFilmRecommendationFilm;
       'api::tv-show.tv-show': ApiTvShowTvShow;
       'api::vote.vote': ApiVoteVote;
       'plugin::content-releases.release': PluginContentReleasesRelease;

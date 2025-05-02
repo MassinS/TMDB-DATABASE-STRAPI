@@ -1,0 +1,37 @@
+{
+  "kind": "collectionType",
+  "collectionName": "recommendation_films",
+  "info": {
+    "singularName": "recommendation-film",
+    "pluralName": "recommendation-films",
+    "displayName": "recommendation_film"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "id_film": {
+      "type": "biginteger",
+      "required": true
+    },
+    "id_films_recommendations": {
+      "type": "json",
+      "required": true
+    },
+    "page_fetched_from_strapi_film": {
+      "type": "biginteger",
+      "required": true
+    },
+    "page_fetched_from_tmdb_recommendation": {
+      "type": "biginteger",
+      "required": true
+    },
+    "page_fetched_from_strapi_recommendation": {
+      "type": "biginteger",
+      "required": true
+    },
+    "page_recommendation_maximum": {
+      "type": "biginteger"
+    }
+  }
+}
