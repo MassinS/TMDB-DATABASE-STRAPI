@@ -4,7 +4,8 @@
   "info": {
     "singularName": "recommendation-film",
     "pluralName": "recommendation-films",
-    "displayName": "recommendation_film"
+    "displayName": "recommendation_film",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true
@@ -21,17 +22,6 @@
     "page_fetched_from_strapi_film": {
       "type": "biginteger",
       "required": true
-    },
-    "page_fetched_from_tmdb_recommendation": {
-      "type": "biginteger",
-      "required": true
-    },
-    "page_fetched_from_strapi_recommendation": {
-      "type": "biginteger",
-      "required": true
-    },
-    "page_recommendation_maximum": {
-      "type": "biginteger"
     }
   }
 }
