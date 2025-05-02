@@ -23,7 +23,7 @@
     "page_fetched_from_strapi_film": {
       "type": "biginteger",
       "required": true,
-      "unique": true
+      "unique": false
     }
   }
 }

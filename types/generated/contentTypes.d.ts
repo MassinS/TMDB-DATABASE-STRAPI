@@ -509,8 +509,7 @@ export interface ApiRecommendationFilmRecommendationFilm
     > &
       Schema.Attribute.Private;
     page_fetched_from_strapi_film: Schema.Attribute.BigInteger &
-      Schema.Attribute.Required &
-      Schema.Attribute.Unique;
+      Schema.Attribute.Required;
     publishedAt: Schema.Attribute.DateTime;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
