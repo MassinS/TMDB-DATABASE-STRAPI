@@ -13,7 +13,8 @@
   "attributes": {
     "id_film": {
       "type": "biginteger",
-      "required": true
+      "required": true,
+      "unique": true
     },
     "id_films_recommendations": {
       "type": "json",
@@ -21,7 +22,8 @@
     },
     "page_fetched_from_strapi_film": {
       "type": "biginteger",
-      "required": true
+      "required": true,
+      "unique": true
     }
   }
 }
