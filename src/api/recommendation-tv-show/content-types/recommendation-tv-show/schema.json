@@ -1,0 +1,26 @@
+{
+  "kind": "collectionType",
+  "collectionName": "recommendation_tv_shows",
+  "info": {
+    "singularName": "recommendation-tv-show",
+    "pluralName": "recommendation-tv-shows",
+    "displayName": "recommendation_TvShow"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "id_TvShow": {
+      "type": "biginteger",
+      "required": true
+    },
+    "id_TvShow_recommendations": {
+      "type": "json",
+      "required": true
+    },
+    "page_fetched_from_strapi_TvShow": {
+      "type": "biginteger",
+      "required": true
+    }
+  }
+}
