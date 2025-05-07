@@ -400,6 +400,42 @@ export interface ApiCommentaireCommentaire extends Struct.CollectionTypeSchema {
   };
 }
 
+export interface ApiConfigurationConfiguration
+  extends Struct.CollectionTypeSchema {
+  collectionName: 'configurations';
+  info: {
+    displayName: 'Configuration';
+    pluralName: 'configurations';
+    singularName: 'configuration';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    backdrop_sizes: Schema.Attribute.JSON & Schema.Attribute.Required;
+    base_url: Schema.Attribute.String & Schema.Attribute.Required;
+    change_keys: Schema.Attribute.JSON & Schema.Attribute.Required;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::configuration.configuration'
+    > &
+      Schema.Attribute.Private;
+    logo_sizes: Schema.Attribute.JSON;
+    poster_sizes: Schema.Attribute.JSON & Schema.Attribute.Required;
+    profile_sizes: Schema.Attribute.JSON & Schema.Attribute.Required;
+    publishedAt: Schema.Attribute.DateTime;
+    secure_base_url: Schema.Attribute.String;
+    still_sizes: Schema.Attribute.JSON & Schema.Attribute.Required;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
 export interface ApiFilmFilm extends Struct.CollectionTypeSchema {
   collectionName: 'films';
   info: {
@@ -1137,6 +1173,7 @@ declare module '@strapi/strapi' {
       'admin::transfer-token-permission': AdminTransferTokenPermission;
       'admin::user': AdminUser;
       'api::commentaire.commentaire': ApiCommentaireCommentaire;
+      'api::configuration.configuration': ApiConfigurationConfiguration;
       'api::film.film': ApiFilmFilm;
       'api::genre-tv-show.genre-tv-show': ApiGenreTvShowGenreTvShow;
       'api::recommendation-film.recommendation-film': ApiRecommendationFilmRecommendationFilm;
