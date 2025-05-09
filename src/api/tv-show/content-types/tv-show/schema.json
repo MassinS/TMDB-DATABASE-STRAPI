@@ -75,7 +75,7 @@
     "page_fetched_from": {
       "type": "biginteger"
     },
-    "genre_tv_shows": {
+    "genre_tv_films": {
       "type": "json",
       "required": true
     }
