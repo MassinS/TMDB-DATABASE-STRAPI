@@ -19,18 +19,6 @@
     "nom_genre": {
       "type": "string",
       "required": true
-    },
-    "tv_show": {
-      "type": "relation",
-      "relation": "manyToOne",
-      "target": "api::tv-show.tv-show",
-      "inversedBy": "genre_tv_films"
-    },
-    "film": {
-      "type": "relation",
-      "relation": "manyToOne",
-      "target": "api::film.film",
-      "inversedBy": "genre_tv_films"
     }
   }
 }

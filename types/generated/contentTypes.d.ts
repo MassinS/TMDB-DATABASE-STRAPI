@@ -453,10 +453,7 @@ export interface ApiFilmFilm extends Struct.CollectionTypeSchema {
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
-    genre_tv_films: Schema.Attribute.Relation<
-      'oneToMany',
-      'api::genre-tv-show.genre-tv-show'
-    >;
+    genre_tv_shows: Schema.Attribute.JSON & Schema.Attribute.Required;
     id_film: Schema.Attribute.BigInteger &
       Schema.Attribute.Required &
       Schema.Attribute.Unique;
@@ -499,7 +496,6 @@ export interface ApiGenreTvShowGenreTvShow extends Struct.CollectionTypeSchema {
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
-    film: Schema.Attribute.Relation<'manyToOne', 'api::film.film'>;
     id_genre: Schema.Attribute.BigInteger &
       Schema.Attribute.Required &
       Schema.Attribute.Unique;
@@ -511,7 +507,6 @@ export interface ApiGenreTvShowGenreTvShow extends Struct.CollectionTypeSchema {
       Schema.Attribute.Private;
     nom_genre: Schema.Attribute.String & Schema.Attribute.Required;
     publishedAt: Schema.Attribute.DateTime;
-    tv_show: Schema.Attribute.Relation<'manyToOne', 'api::tv-show.tv-show'>;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -604,10 +599,7 @@ export interface ApiTvShowTvShow extends Struct.CollectionTypeSchema {
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
     first_air_date: Schema.Attribute.Date & Schema.Attribute.Required;
-    genre_tv_films: Schema.Attribute.Relation<
-      'oneToMany',
-      'api::genre-tv-show.genre-tv-show'
-    >;
+    genre_tv_shows: Schema.Attribute.JSON & Schema.Attribute.Required;
     id_TvShow: Schema.Attribute.BigInteger & Schema.Attribute.Required;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<
