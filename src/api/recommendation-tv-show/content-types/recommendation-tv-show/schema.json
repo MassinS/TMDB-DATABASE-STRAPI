@@ -4,7 +4,8 @@
   "info": {
     "singularName": "recommendation-tv-show",
     "pluralName": "recommendation-tv-shows",
-    "displayName": "recommendation_TvShow"
+    "displayName": "recommendation_TvShow",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true
@@ -12,7 +13,8 @@
   "attributes": {
     "id_TvShow": {
       "type": "biginteger",
-      "required": true
+      "required": true,
+      "unique": true
     },
     "id_TvShow_recommendations": {
       "type": "json",

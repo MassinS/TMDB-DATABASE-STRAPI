@@ -4,16 +4,13 @@
   "info": {
     "singularName": "commentaire",
     "pluralName": "commentaires",
-    "displayName": "commentaire"
+    "displayName": "commentaire",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true
   },
   "attributes": {
-    "id_user": {
-      "type": "biginteger",
-      "required": true
-    },
     "id_media_type": {
       "type": "biginteger",
       "required": true
@@ -25,6 +22,11 @@
     "commentaire": {
       "type": "text",
       "required": true
+    },
+    "id_user": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "plugin::users-permissions.user"
     }
   }
 }

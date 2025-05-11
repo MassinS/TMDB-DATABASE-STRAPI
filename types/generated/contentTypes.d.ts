@@ -372,6 +372,7 @@ export interface AdminUser extends Struct.CollectionTypeSchema {
 export interface ApiCommentaireCommentaire extends Struct.CollectionTypeSchema {
   collectionName: 'commentaires';
   info: {
+    description: '';
     displayName: 'commentaire';
     pluralName: 'commentaires';
     singularName: 'commentaire';
@@ -385,7 +386,10 @@ export interface ApiCommentaireCommentaire extends Struct.CollectionTypeSchema {
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
     id_media_type: Schema.Attribute.BigInteger & Schema.Attribute.Required;
-    id_user: Schema.Attribute.BigInteger & Schema.Attribute.Required;
+    id_user: Schema.Attribute.Relation<
+      'oneToOne',
+      'plugin::users-permissions.user'
+    >;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<
       'oneToMany',
@@ -582,6 +586,7 @@ export interface ApiRecommendationTvShowRecommendationTvShow
   extends Struct.CollectionTypeSchema {
   collectionName: 'recommendation_tv_shows';
   info: {
+    description: '';
     displayName: 'recommendation_TvShow';
     pluralName: 'recommendation-tv-shows';
     singularName: 'recommendation-tv-show';
@@ -593,7 +598,9 @@ export interface ApiRecommendationTvShowRecommendationTvShow
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
-    id_TvShow: Schema.Attribute.BigInteger & Schema.Attribute.Required;
+    id_TvShow: Schema.Attribute.BigInteger &
+      Schema.Attribute.Required &
+      Schema.Attribute.Unique;
     id_TvShow_recommendations: Schema.Attribute.JSON &
       Schema.Attribute.Required;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
