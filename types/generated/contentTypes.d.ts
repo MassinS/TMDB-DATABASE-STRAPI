@@ -385,6 +385,7 @@ export interface ApiCommentaireCommentaire extends Struct.CollectionTypeSchema {
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
+    date_commentaire: Schema.Attribute.Date;
     id_media_type: Schema.Attribute.BigInteger & Schema.Attribute.Required;
     id_user: Schema.Attribute.Relation<
       'oneToOne',
@@ -637,7 +638,9 @@ export interface ApiTvShowTvShow extends Struct.CollectionTypeSchema {
       Schema.Attribute.Private;
     first_air_date: Schema.Attribute.Date & Schema.Attribute.Required;
     genre_tv_films: Schema.Attribute.JSON & Schema.Attribute.Required;
-    id_TvShow: Schema.Attribute.BigInteger & Schema.Attribute.Required;
+    id_TvShow: Schema.Attribute.BigInteger &
+      Schema.Attribute.Required &
+      Schema.Attribute.Unique;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<
       'oneToMany',

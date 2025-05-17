@@ -27,6 +27,9 @@
       "type": "relation",
       "relation": "oneToOne",
       "target": "plugin::users-permissions.user"
+    },
+    "date_commentaire": {
+      "type": "date"
     }
   }
 }

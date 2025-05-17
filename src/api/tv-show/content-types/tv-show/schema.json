@@ -13,7 +13,8 @@
   "attributes": {
     "id_TvShow": {
       "type": "biginteger",
-      "required": true
+      "required": true,
+      "unique": true
     },
     "Name": {
       "type": "string",
