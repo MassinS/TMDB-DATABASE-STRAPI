@@ -18,7 +18,8 @@
     },
     "Name": {
       "type": "string",
-      "required": true
+      "required": true,
+      "unique": true
     },
     "original_Name": {
       "type": "string",

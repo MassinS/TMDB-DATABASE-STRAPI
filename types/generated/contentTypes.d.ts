@@ -649,7 +649,9 @@ export interface ApiTvShowTvShow extends Struct.CollectionTypeSchema {
       'api::tv-show.tv-show'
     > &
       Schema.Attribute.Private;
-    Name: Schema.Attribute.String & Schema.Attribute.Required;
+    Name: Schema.Attribute.String &
+      Schema.Attribute.Required &
+      Schema.Attribute.Unique;
     Origin_country: Schema.Attribute.JSON & Schema.Attribute.Required;
     original_language: Schema.Attribute.String & Schema.Attribute.Required;
     original_Name: Schema.Attribute.String & Schema.Attribute.Required;
